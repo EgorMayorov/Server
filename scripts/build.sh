@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo docker build -t server .
+sudo docker build -t emayorov/server .
 

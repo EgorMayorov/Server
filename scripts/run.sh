@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo docker run -p 5010:5010 -i server
+sudo docker run -p 5010:5010 -i emayorov/server
 
