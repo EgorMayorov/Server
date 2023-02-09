@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="ru">
+
+<head>
+    <meta charset='utf-8'>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'modern';
+            font-weight: 600;
+            <! -- --> background: url(bg.jpg);
+            <! -- --> background-repeat: no-repeat;
+            <! -- --> background-position: center center;
+            <! -- --> background-attachment: fixed;
+            <! -- --> -webkit-background-size: cover;
+            <! -- --> -moz-background-size: cover;
+            <! -- --> -o-background-size: cover;
+            <! -- --> background-size: cover;
+        }
+    </style>     
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

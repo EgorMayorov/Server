@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+
+{% block title %}Выбор модели{% endblock %}
+
+
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  min-width: 300px;
+}
+</style>
+
+
+
+<center>
+<h1>Выберите модель</h1>
+
+<h2>Дальнейшая работа будет происходить с выбранной моделью</h2>
+
+<a href="{{ url_for('GB_params') }}"><button class="button">Градиентный бустинг</button></a>
+&nbsp;
+&nbsp;
+&nbsp;
+<a href="{{ url_for('RF_params') }}"><button class="button">Случайный лес</button></a>
+</center> 
+
+<br>
+<br>
+<br>
+<br>
+<center>
+<a href="{{ url_for('start') }}"><button class="button">На главную</button></a>
+</center>
+{% endblock %}

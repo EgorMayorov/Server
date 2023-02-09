@@ -1,0 +1,81 @@
+{% extends "main.html" %}
+
+{% block title %}Загрузка данных{% endblock %}
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 30px 20px;
+  min-width: 300px;
+}
+</style>
+
+<center>
+<h1>Параметры модели</h1>
+<ul>
+    <div style="text-align: center;">
+    <div style="display: inline-block;">
+    {{ params.to_html(index=False, justify='center') | safe }}
+    </div>
+    </div>
+    <br>
+</ul>
+</center>
+
+<center>
+<h1>Данные для обучения</h1>
+<ul>
+    <h4>Целевая переменная — <i>{{target_name}}</i>.</h4>
+    <div style="text-align: center;">
+    <div style="display: inline-block;">
+    {{ data_train.to_html(justify='center') | safe }}
+    </div>
+    </div>
+    <br>
+</ul>
+</center>
+
+{% if not ch2 %}
+    <center>
+    <h1>Валидационная выборка</h1>
+    <ul>
+        <div style="text-align: center;">
+        <div style="display: inline-block;">
+        {{ data_val.to_html(justify='center') | safe }}
+        </div>
+        </div>
+        <br>
+    </ul>
+    </center>
+{% endif %}
+
+<center>
+<h1>Тестовые данные</h1>
+{% if not ch1 %}
+    <ul>
+        <div style="text-align: center;">
+        <div style="display: inline-block;">
+        {{ data_test.to_html(justify='center') | safe }}
+        </div>
+        </div>
+        <br>
+    </ul>
+{% else %}
+    <h2>Тестовые данные не загружены</h2>
+    <h3>Предсказание сделать не удастся</h3>
+{% endif %}
+</center>
+
+<br>
+<center>
+<a href="{{ url_for('trained_model') }}"><button class="button">Обучить модель</button></a>
+<h4>Возможно придется подождать, пока модель обучится.</h4>
+</center>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "main.html" %}
+
+{% block title %}Обученная модель{% endblock %}
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 30px 20px;
+  min-width: 300px;
+}
+.flexbox {
+    display: flex;
+}
+</style>
+
+<center>
+<h1>Модель обучена</h1>
+
+<p><b>Лучшее значение RMSE на обучающей выборке: {{ best_loss }}</b></p> 
+
+<p><b>Время обучения: {{ time }} с</b></p>
+
+<h3>
+График функции потерь в процессе обучения
+</h3>
+<img src={{ url_for('plot') }} width=60%>
+
+
+{% if ch %}
+    <h3>Тестовая выборка не была загружена, предсказание сделать невозможно.</h3>
+{% else %}
+    <h3>Тестовая выборка загружена, можно сделать предсказание.</h3>
+    <h4>Предсказание будет представлено на отдельной странице, его можно будет загрузить в csv файл.</h4>
+    <br>
+    <br>
+    <a href="{{ url_for('prediction') }}"><button class="button">Сделать предсказание</button></a>
+{% endif %}
+
+<br>
+<br>
+<br>
+<br>
+<center>
+<a href="{{ url_for('start') }}"><button class="button">На главную</button></a>
+</center>
+
+{% endblock %}

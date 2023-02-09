@@ -1,0 +1,70 @@
+{% extends "main.html" %}
+
+{% block title %}Загрузка данных{% endblock %}
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 30px 20px;
+  min-width: 300px;
+}
+</style>
+
+
+<center>
+<h1>Загрузка данных</h1>
+
+<h3>Необходимо загрузить обучающий датасет и выбрать целевую переменную.<br>
+Тестовый датасет загружать необязательно, но в таком случае предсказание сделать будет невозможно.<br>
+Валидационный датасет загружать тоже необязательно.</h3>
+
+<form method='POST' enctype="multipart/form-data" action={{ url_for('data_input') }}>
+    {{ data.csrf_token }}
+    <div class='field'>
+        {{ data.train_data.label }}
+    </div>
+    <div class='field'>
+        {{ data.train_data() }}
+    </div>
+    <br>
+    <div class='field'>
+        {{ data.target_name.label }}
+    </div>
+    <div class='field'>
+        {{ data.target_name(size=35) }}
+    </div>
+    <br>
+    <div class='field'>
+        {{ data.val_data.label }}
+    </div>
+    <div class='field'>
+        {{ data.val_data() }}
+    </div>
+    <br>
+    <div class='field'>
+        {{ data.test_data.label }}
+    </div>
+    <div class='field'>
+        {{ data.test_data() }}
+    </div>
+    <br>
+    <br>
+    <input type="submit" value="Загрузить" class="button">
+</form>
+</center>
+
+<br>
+<br>
+<br>
+<br>
+<center>
+<a href="{{ url_for('start') }}"><button class="button">На главную</button></a>
+</center>
+{% endblock %}

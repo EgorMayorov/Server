@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+
+{% block title %}Обученная модель{% endblock %}
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 30px 20px;
+  min-width: 300px;
+}
+.flexbox {
+    display: flex;
+}
+</style>
+
+<center>
+<h1>Предсказанные данные</h1>
+
+<h3><b>Время предсказания: {{ time }} с</b></h3>
+
+
+
+<br>
+<form method='POST' action={{ url_for('prediction') }}>
+    <div class='field'>
+        {{ save.save.label }}
+    </div>
+    <input type="submit" value="Скачать" class="button">
+</form>
+
+
+
+<br>
+<center>
+<a href="{{ url_for('start') }}"><button class="button">На главную</button></a>
+</center>
+<br>
+<br>
+
+<ul>
+    <div style="text-align: center;">
+    <div style="display: inline-block;">
+    {{ data.to_html(justify='center') | safe }}
+    </div>
+    </div>
+    <br>
+</ul>
+</center>
+
+
+{% endblock %}

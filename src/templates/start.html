@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{% block title %}Веб-сервер{% endblock %}
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 50px;
+  padding: 40px 60px;
+}
+</style>
+
+
+<center>
+<h1>Веб-сервер для создания моделей, обучения их на загруженных данных и получения предсказания для выбранных данных</h1>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<a href="{{ url_for('model_choose') }}"><button class="button">Старт</button></a>
+</center>
+{% endblock %}

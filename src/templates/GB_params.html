@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+
+{% block title %}Задание параметров модели{% endblock %}
+
+{% block content %}
+<style>
+.button {
+  background-color: #77DD77;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 20px;
+  padding: 20px 30px;
+  min-width: 300px;
+}
+</style>
+
+
+<center>
+<h1>Модель Градиентный бустинг</h1>
+
+<h2>Выберите гиперпараметры для модели</h2>
+
+<form method='POST' action={{ url_for('GB_params', name=name) }}>
+        <div class='field'>
+            {{ params.n_estimators.label }}
+        </div>
+        <div class='field'>
+            {{ params.n_estimators(size=35) }}
+        </div>
+        <br>
+        <div class='field'>
+            {{ params.learning_rate.label }}
+        </div>
+        <div class='field'>
+            {{ params.learning_rate(size=35) }}
+        </div>
+        <br>
+        <div class='field'>
+            {{ params.max_depth.label }}
+        </div>
+        <div class='field'>
+            {{ params.max_depth(size=35) }}
+        </div>
+        <br>
+        <div class='field'>
+            {{ params.feature_num.label }}
+        </div>
+        <div class='field'>
+            {{ params.feature_num(size=35) }}
+        </div>
+        <br>
+        <br>
+        
+        <input type="submit" value="Сохранить модель" class="button">
+</form>
+</center>
+
+<br>
+<br>
+<br>
+<br>
+<center>
+<a href="{{ url_for('model_choose') }}"><button class="button">Назад</button></a>
+</center>
+{% endblock %}
